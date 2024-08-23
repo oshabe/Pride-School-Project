@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Pride : DashBoard</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -23,7 +25,7 @@
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block d-none">
                     @auth
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
                     @else
@@ -37,51 +39,127 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
+                <div class="flex justify-center pt-8 sm:justify-center sm:pt-0">
+                    <h1 class="text-gray-400 font-semibold"> Pride Primary School</h1>
                 </div>
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                <div>
+                    <form class="d-flex" id="searchForm">
+                        <input class="form-control me-2" id="searchInput" type="search" placeholder="Search by students name" aria-label="Search">
+                    </form>
+                    <div id="searchResults" style="border: 1px solid #ddd;border-radius: 4px;padding: 3px;max-height: 200px;overflow-y: auto;"></div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
+                        <div class="p-3">
+                            <div class="p-4 sm:rounded-lg shadow">
+                                <div class="flex items-center bg-success sm:rounded-lg p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+                                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Students at Nil</a></div>
+                                </div>
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
+                                <div class="ml-12">
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm mb-2">
+                                        This statistics shows all students in different classes that have finished all the school fees, <strong>Year 2024, Term two</strong>
+                                    </div>
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            @foreach($allClasses as $allClasse)
+                                                <tr>
+                                                    <td class="text-sm"><strong>{{ $allClasse->name }}</strong></td>
+                                                    <td>
+                                                        <?php
+                                                            $studentIdCount = 0;
+                                                            foreach ($allClassStudents as $studentClass) {
+                                                                if ($studentClass->id === $allClasse->id && $studentClass->pStatus === 'Nil') { // Check for class ID and zero balance
+                                                                $studentIdCount++;
+                                                                }
+                                                            }
+                                                            echo $studentIdCount . ' pupils';
+                                                        ?>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <a href="/Class/{{ $allClasse->id }}" class="fs-9"><u><i>more details</i></u></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" /></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
+                        <div class="p-3">
+                            <div class="p-4 sm:rounded-lg shadow">
+                                <div class="flex items-center bg-warning sm:rounded-lg p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+                                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Students with Balances</a></div>
+                                </div>
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                                <div class="ml-12">
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm mb-2">
+                                        This statistics shows all students in different classes that still have school fees balance,<strong>Year 2024, Term two</strong>
+                                    </div>
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            @foreach($allClasses as $allClasse)
+                                                <tr>
+                                                    <td class="text-sm"><strong>{{ $allClasse->name }}</strong></td>
+                                                    <td>
+                                                        <?php
+                                                            $studentIdCount = 0;
+                                                            foreach ($allClassStudents as $studentClass) {
+                                                                if ($studentClass->id === $allClasse->id && $studentClass->pStatus === 'Pending') { // Check for class ID and zero balance
+                                                                $studentIdCount++;
+                                                                }
+                                                            }
+                                                            echo $studentIdCount . ' pupils';
+                                                        ?>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <a href="/Class/{{ $allClasse->id }}" class="fs-9"><u><i>more details</i></u></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
+                        <div class="p-3">
+                            <div class="p-4 sm:rounded-lg shadow">
+                                <div class="flex items-center bg-danger sm:rounded-lg p-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+                                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Fees Defaulters</a></div>
+                                </div>
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
+                                <div class="ml-12">
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm mb-2">
+                                        This statistics shows all students in different classes that have not yet payed any single coin<strong>Year 2024, Term two</strong>
+                                    </div>
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            @foreach($allClasses as $allClasse)
+                                                <tr>
+                                                    <td class="text-sm"><strong>{{ $allClasse->name }}</strong></td>
+                                                    <td>
+                                                        <?php
+                                                            $studentIdCount = 0;
+                                                            foreach ($allClassStudents as $studentClass) {
+                                                                if ($studentClass->id === $allClasse->id &&  ($studentClass->pStatus=='pending' || $studentClass->pStatus === 'Nil')) { // Check for class ID and zero balance
+                                                                $studentIdCount++;
+                                                                }
+                                                            }
+                                                            echo $studentIdCount . ' pupils';
+                                                        ?>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <a href="/Class/{{ $allClasse->id }}" class="fs-9"><u><i>more details</i></u></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -89,16 +167,594 @@
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                             <div class="flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500"><path stroke-linecap="round" stroke-linejoin="round" d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64" /></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
+                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Others Statistics</div>
                             </div>
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
+                                    Laravel's robust library of first-party tools and libraries, such as 
+                                    <a href="https://forge.laravel.com" class="underline">Forge</a>,
+                                     <a href="https://vapor.laravel.com" class="underline">Vapor</a>, 
+                                     <a href="https://nova.laravel.com" class="underline">Nova</a>, and
+                                      <a href="https://envoyer.io" class="underline">Envoyer</a>
+                                      <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-sm"><strong>Primary one:</strong></td>
+                                                <td>34 pupils</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm"><strong>Primary two:</strong></td>
+                                                <td>14 pupils</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm"><strong>Primary three:</strong></td>
+                                                <td>34 pupils</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm"><strong>Primary four:</strong></td>
+                                                <td>80 pupils</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm"><strong>Primary five:</strong></td>
+                                                <td>56 pupils</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm"><strong>Primary six:</strong></td>
+                                                <td>45 pupils</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-sm"><strong>Primary seven:</strong></td>
+                                                <td>60 pupils</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <!--begin::Col-->
+                        <div class="mt-5 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                            <!--begin::Timeline widget 3-->
+                            <div class="card">
+                                <!--begin::Header-->
+                                <div class="card-header border-0 pt-2">
+                                    <h3 class="card-title align-items-center flex-column">
+                                        <span class="card-label fw-bold text-dark">Primary One</span>
+                                    </h3>
+                                    <span class="text-gray-400 fs-8">there over 100 pupils in primary one</span>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::Body-->
+                                <div class="card-body pt-7 scroll-y h-50px">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                        <!--begin::Table head-->
+                                        <thead>
+                                            <!--begin::Table row-->
+                                            <tr class="text-start text-gray-400 fw-bold fs-7 bg-light text-uppercase gs-0">
+                                                <th class="ps-4 min-w-125px rounded-start">N0</th>
+                                                <th class="min-w-125px">Name</th>
+                                                <th class="min-w-125px">Status</th>
+                                                <th class="text-end min-w-70px"></th>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fw-semibold text-gray-600">                                         
+                                            @foreach ($allStudents as $student)
+                                                @if ($student->class === 'Primary One')
+                                                    @if ($student->statusFee)
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-3">
+                                                                    </div>
+                                                                    <div class="d-flex justify-content-start flex-column">
+                                                                        <span class="text-muted fw-semibold text-muted d-block fs-7">{{ $loop->iteration }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <!--begin::Name=-->
+                                                            <td>
+                                                                <div class="">
+                                                                    <span class="text-muted fw-semibold text-muted d-block fs-7">{{$student->name}}</span>
+                                                                </div>
+                                                            </td>
+                                                            <!--end::Name=-->
+                                                            <!--begin::Date=-->                                                      
+                                                            @if ($student->statusFee)
+                                                                <td>
+                                                                    @if ($student->statusFee->payment_status === 'Pending')
+                                                                        <span class="text-warning">{{$student->statusFee->payment_status}}</span>
+                                                                    @elseif ($student->statusFee->payment_status === 'Nil')
+                                                                        <span class="text-success">{{$student->statusFee->payment_status}}</span>
+                                                                    @else
+                                                                        <span class="text-danger">No Payment</span>
+                                                                    @endif
+                                                                </td>
+                                                            @else
+                                                                <td><span class="text-danger">Not Paid</span></td>
+                                                            @endif
+                                                            <!--begin::Action=-->
+                                                            <td class="text-end">
+                                                                <a href="/Student/{{$student->id}}" class=" fs-9"><u><i>More details</i></u></a>
+                                                            </td>
+                                                            <!--end::Action=-->
+                                                        </tr> 
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </tbody>
+                                        <!--end::Table body-->
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end: Card Body-->
+                            </div>
+                            <!--end::Timeline widget 3-->
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <div class="col">
+                        <!--begin::Col-->
+                        <div class="mt-5 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                            <!--begin::Timeline widget 3-->
+                            <div class="card">
+                                <!--begin::Header-->
+                                <div class="card-header border-0 pt-2">
+                                    <h3 class="card-title align-items-center flex-column">
+                                        <span class="card-label fw-bold text-dark">Primary Two</span>
+                                    </h3>
+                                    <span class="text-gray-400 fs-8">there over 120 pupils in primary two</span>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::Body-->
+                                <div class="card-body pt-7 scroll-y h-50px">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                        <!--begin::Table head-->
+                                        <thead>
+                                            <!--begin::Table row-->
+                                            <tr class="text-start text-gray-400 fw-bold fs-7 bg-light text-uppercase gs-0">
+                                                <th class="ps-4 min-w-125px rounded-start">N0</th>
+                                                <th class="min-w-125px">Name</th>
+                                                <th class="min-w-125px">Status</th>
+                                                <th class="text-end min-w-70px"></th>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fw-semibold text-gray-600">
+                                            
+                                            @foreach ($allStudents as $student)
+                                                @if ($student->class === 'Primary Two')
+                                                    @if ($student->statusFee)
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-3">
+                                                                    </div>
+                                                                    <div class="d-flex justify-content-start flex-column">
+                                                                        <span class="text-muted fw-semibold text-muted d-block fs-7">{{ $loop->iteration }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <!--begin::Name=-->
+                                                            <td>
+                                                                <div class="">
+                                                                    <span class="text-muted fw-semibold text-muted d-block fs-7">{{$student->name}}</span>
+                                                                </div>
+                                                            </td>
+                                                            <!--end::Name=-->
+                                                            <!--begin::Date=-->                                                      
+                                                            @if ($student->statusFee)
+                                                                <td>
+                                                                    @if ($student->statusFee->payment_status === 'Pending')
+                                                                        <span class="text-warning">{{$student->statusFee->payment_status}}</span>
+                                                                    @elseif ($student->statusFee->payment_status === 'Nil')
+                                                                        <span class="text-success">{{$student->statusFee->payment_status}}</span>
+                                                                    @else
+                                                                        <span class="text-danger">No Payment</span>
+                                                                    @endif
+                                                                </td>
+                                                            @else
+                                                                <td><span class="text-danger">Not Paid</span></td>
+                                                            @endif
+                                                            <!--begin::Action=-->
+                                                            <td class="text-end">
+                                                                <a href="/Student/{{$student->id}}" class=" fs-9"><u><i>More details</i></u></a>
+                                                            </td>
+                                                            <!--end::Action=-->
+                                                        </tr> 
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </tbody>
+                                        <!--end::Table body-->
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end: Card Body-->
+                            </div>
+                            <!--end::Timeline widget 3-->
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <!--begin::Col-->
+                        <div class="mt-5 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                            <!--begin::Timeline widget 3-->
+                            <div class="card">
+                                <!--begin::Header-->
+                                <div class="card-header border-0 pt-2">
+                                    <h3 class="card-title align-items-center flex-column">
+                                        <span class="card-label fw-bold text-dark">Primary Three</span>
+                                    </h3>
+                                    <span class="text-gray-400 fs-8">there over 500 pupils in primary three</span>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::Body-->
+                                <div class="card-body pt-7 scroll-y h-50px">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                        <!--begin::Table head-->
+                                        <thead>
+                                            <!--begin::Table row-->
+                                            <tr class="text-start text-gray-400 fw-bold fs-7 bg-light text-uppercase gs-0">
+                                                <th class="ps-4 min-w-125px rounded-start">N0</th>
+                                                <th class="min-w-125px">Name</th>
+                                                <th class="min-w-125px">Status</th>
+                                                <th class="text-end min-w-70px"></th>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fw-semibold text-gray-600">
+                                            @foreach($allStudents as $allStudent)
+                                                @if ($allStudent->class === 'Primary Three')
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="me-3">
+                                                                </div>
+                                                                <div class="d-flex justify-content-start flex-column">
+                                                                    <span class="text-muted fw-semibold text-muted d-block fs-7">{{ $loop->index}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <!--begin::Name=-->
+                                                        <td>
+                                                            <div class="">
+                                                                <span class="text-muted fw-semibold text-muted d-block fs-7">{{$allStudent->name}}</span>
+                                                            </div>
+                                                        </td>
+                                                        <!--end::Name=-->
+                                                        <!--begin::Date=-->
+                                                        <td><span class="text-success">Nil</span></td>
+                                                        <!--end::Date=-->
+                                                        <!--begin::Action=-->
+                                                        <td class="text-end">
+                                                            <a href="/Student/{{$allStudent->id}}" class=" fs-9"><u><i>more details</i></u></a>
+                                                        </td>
+                                                        <!--end::Action=-->
+                                                    </tr>  
+                                                 @endif
+                                            @endforeach                         
+                                        </tbody>
+                                        <!--end::Table body-->
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end: Card Body-->
+                            </div>
+                            <!--end::Timeline widget 3-->
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <div class="col">
+                        <!--begin::Col-->
+                        <div class="mt-5 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                            <!--begin::Timeline widget 3-->
+                            <div class="card">
+                                <!--begin::Header-->
+                                <div class="card-header border-0 pt-2">
+                                    <h3 class="card-title align-items-center flex-column">
+                                        <span class="card-label fw-bold text-dark">Primary Four</span>
+                                    </h3>
+                                    <span class="text-gray-400 fs-8">there over 220 pupils in primary four</span>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::Body-->
+                                <div class="card-body pt-7 scroll-y h-50px">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                        <!--begin::Table head-->
+                                        <thead>
+                                            <!--begin::Table row-->
+                                            <tr class="text-start text-gray-400 fw-bold fs-7 bg-light text-uppercase gs-0">
+                                                <th class="ps-4 min-w-125px rounded-start">N0</th>
+                                                <th class="min-w-125px">Name</th>
+                                                <th class="min-w-125px">Status</th>
+                                                <th class="min-w-125px">Total</th>
+                                                <th class="text-end min-w-70px"></th>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fw-semibold text-gray-600">
+                                            @foreach($allStudents as $allStudent)
+                                                @if ($allStudent->class === 'Primary Four')
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="me-3">
+                                                                </div>
+                                                                <div class="d-flex justify-content-start flex-column">
+                                                                    <span class="text-muted fw-semibold text-muted d-block fs-7">{{ $loop->index}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <!--begin::Name=-->
+                                                        <td>
+                                                            <div class="">
+                                                                <span class="text-muted fw-semibold text-muted d-block fs-7">{{$allStudent->name}}</span>
+                                                            </div>
+                                                        </td>
+                                                        <!--end::Name=-->
+                                                        <!--begin::Date=-->
+                                                        <td><span class="text-success">Nil</span></td>
+                                                        <!--end::Date=-->
+                                                        <td>100,000</td>
+                                                        <!--begin::Action=-->
+                                                        <td class="text-end">
+                                                            <a href="/Student/{{$allStudent->id}}" class=" fs-9"><u><i>more details</i></u></a>
+                                                        </td>
+                                                        <!--end::Action=-->
+                                                    </tr>  
+                                                 @endif
+                                            @endforeach                         
+                                        </tbody>
+                                        <!--end::Table body-->
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end: Card Body-->
+                            </div>
+                            <!--end::Timeline widget 3-->
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <!--begin::Col-->
+                        <div class="mt-5 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                            <!--begin::Timeline widget 3-->
+                            <div class="card">
+                                <!--begin::Header-->
+                                <div class="card-header border-0 pt-2">
+                                    <h3 class="card-title align-items-center flex-column">
+                                        <span class="card-label fw-bold text-dark">Primary Five</span>
+                                    </h3>
+                                    <span class="text-gray-400 fs-8">there over 100 pupils in primary five</span>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::Body-->
+                                <div class="card-body pt-7 scroll-y h-50px">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                        <!--begin::Table head-->
+                                        <thead>
+                                            <!--begin::Table row-->
+                                            <tr class="text-start text-gray-400 fw-bold fs-7 bg-light text-uppercase gs-0">
+                                                <th class="ps-4 min-w-125px rounded-start">N0</th>
+                                                <th class="min-w-125px">Name</th>
+                                                <th class="min-w-125px">Status</th>
+                                                <th class="min-w-125px">Total</th>
+                                                <th class="text-end min-w-70px"></th>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fw-semibold text-gray-600">
+                                            @foreach($allStudents as $allStudent)
+                                                @if ($allStudent->class === 'Primary Five')
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="me-3">
+                                                                </div>
+                                                                <div class="d-flex justify-content-start flex-column">
+                                                                    <span class="text-muted fw-semibold text-muted d-block fs-7">{{ $loop->index}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <!--begin::Name=-->
+                                                        <td>
+                                                            <div class="">
+                                                                <span class="text-muted fw-semibold text-muted d-block fs-7">{{$allStudent->name}}</span>
+                                                            </div>
+                                                        </td>
+                                                        <!--end::Name=-->
+                                                        <!--begin::Date=-->
+                                                        <td><span class="text-success">Nil</span></td>
+                                                        <!--end::Date=-->
+                                                        <td>100,000</td>
+                                                        <!--begin::Action=-->
+                                                        <td class="text-end">
+                                                            <a href="/Student/{{$allStudent->id}}" class=" fs-9"><u><i>more details</i></u></a>
+                                                        </td>
+                                                        <!--end::Action=-->
+                                                    </tr>  
+                                                 @endif
+                                            @endforeach                         
+                                        </tbody>
+                                        <!--end::Table body-->
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end: Card Body-->
+                            </div>
+                            <!--end::Timeline widget 3-->
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <div class="col">
+                        <!--begin::Col-->
+                        <div class="mt-5 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                            <!--begin::Timeline widget 3-->
+                            <div class="card">
+                                <!--begin::Header-->
+                                <div class="card-header border-0 pt-2">
+                                    <h3 class="card-title align-items-center flex-column">
+                                        <span class="card-label fw-bold text-dark">Primary Six</span>
+                                    </h3>
+                                    <span class="text-gray-400 fs-8">there over 300 pupils in primary six</span>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::Body-->
+                                <div class="card-body pt-7 scroll-y h-50px">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                        <!--begin::Table head-->
+                                        <thead>
+                                            <!--begin::Table row-->
+                                            <tr class="text-start text-gray-400 fw-bold fs-7 bg-light text-uppercase gs-0">
+                                                <th class="ps-4 min-w-125px rounded-start">N0</th>
+                                                <th class="min-w-125px">Name</th>
+                                                <th class="min-w-125px">Status</th>
+                                                <th class="min-w-125px">Total</th>
+                                                <th class="text-end min-w-70px"></th>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fw-semibold text-gray-600">
+                                            @foreach($allStudents as $allStudent)
+                                                @if ($allStudent->class === 'Primary Six')
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="me-3">
+                                                                </div>
+                                                                <div class="d-flex justify-content-start flex-column">
+                                                                    <span class="text-muted fw-semibold text-muted d-block fs-7">{{ $loop->index}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <!--begin::Name=-->
+                                                        <td>
+                                                            <div class="">
+                                                                <span class="text-muted fw-semibold text-muted d-block fs-7">{{$allStudent->name}}</span>
+                                                            </div>
+                                                        </td>
+                                                        <!--end::Name=-->
+                                                        <!--begin::Date=-->
+                                                        <td><span class="text-success">Nil</span></td>
+                                                        <!--end::Date=-->
+                                                        <td>100,000</td>
+                                                        <!--begin::Action=-->
+                                                        <td class="text-end">
+                                                            <a href="/Student/{{$allStudent->id}}" class=" fs-9"><u><i>more details</i></u></a>
+                                                        </td>
+                                                        <!--end::Action=-->
+                                                    </tr>  
+                                                 @endif
+                                            @endforeach                         
+                                        </tbody>
+                                        <!--end::Table body-->
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end: Card Body-->
+                            </div>
+                            <!--end::Timeline widget 3-->
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                </div>
+                <div class="mt-5 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <!--begin::Timeline widget 3-->
+                    <div class="card">
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-2">
+                            <h3 class="card-title align-items-center flex-column">
+                                <span class="card-label fw-bold text-dark">Primary Seven</span>
+                            </h3>
+                            <span class="text-gray-400 fs-8">there over 70 pupils in primary seven</span>
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body pt-7 scroll-y h-50px">
+                            <!--begin::Table-->
+                            <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                <!--begin::Table head-->
+                                <thead>
+                                    <!--begin::Table row-->
+                                    <tr class="text-start text-gray-400 fw-bold fs-7 bg-light text-uppercase gs-0">
+                                        <th class="ps-4 min-w-125px rounded-start">N0</th>
+                                        <th class="min-w-125px">Name</th>
+                                        <th class="min-w-125px">Status</th>
+                                        <th class="min-w-125px">Total</th>
+                                        <th class="text-end min-w-70px"></th>
+                                    </tr>
+                                    <!--end::Table row-->
+                                </thead>
+                                <!--end::Table head-->
+                                <!--begin::Table body-->
+                                <tbody class="fw-semibold text-gray-600">
+                                    @foreach($allStudents as $allStudent)
+                                        @if ($allStudent->class === 'Primary Seven')
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="me-3">
+                                                        </div>
+                                                        <div class="d-flex justify-content-start flex-column">
+                                                            <span class="text-muted fw-semibold text-muted d-block fs-7">{{ $loop->index}}</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <!--begin::Name=-->
+                                                <td>
+                                                    <div class="">
+                                                        <span class="text-muted fw-semibold text-muted d-block fs-7">{{$allStudent->name}}</span>
+                                                    </div>
+                                                </td>
+                                                <!--end::Name=-->
+                                                <!--begin::Date=-->
+                                                <td><span class="text-success">Nil</span></td>
+                                                <!--end::Date=-->
+                                                <td>100,000</td>
+                                                <!--begin::Action=-->
+                                                <td class="text-end">
+                                                    <a href="/Student/{{$allStudent->id}}" class=" fs-9"><u><i>more details</i></u></a>
+                                                </td>
+                                                <!--end::Action=-->
+                                            </tr>  
+                                            @endif
+                                    @endforeach                         
+                                </tbody>
+                                <!--end::Table body-->
+                            </table>
+                            <!--end::Table-->
+                        </div>
+                        <!--end: Card Body-->
+                    </div>
+                    <!--end::Timeline widget 3-->
                 </div>
 
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
@@ -109,7 +765,7 @@
                             </svg>
 
                             <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
+                                pride@gmail.com
                             </a>
 
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-4 -mt-px w-5 h-5 text-gray-400">
@@ -117,16 +773,80 @@
                             </svg>
 
                             <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
+                                pride@twitter.com
                             </a>
                         </div>
                     </div>
 
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                        Pride Primary School Version (V9.0.101)
                     </div>
                 </div>
             </div>
         </div>
+
+        <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script>
+
+
+            $(document).ready(function() {
+                //start search Student
+                $('#searchInput').keyup(function() {
+                    const searchTerm = $(this).val().trim(); // Get search term and trim whitespace
+
+                    // Only proceed if the search term is not empty
+                    if (searchTerm) {
+                    $.ajax({
+                        url: '/search-students', // Replace with your server-side endpoint
+                        dataType: 'json',
+                        data: { q: searchTerm }, // Send search term as query parameter
+                        success: function(data) {
+                        $('#searchResults').html(''); // Clear previous results
+
+                        // Build the table of results (refer to previous explanation)
+
+                        if (data.length > 0) {
+                            // Display results if data is found
+                            const table = $('<table>');
+                            table.addClass('table table-striped'); // Add Bootstrap classes for styling (optional)
+                            const tableHeader = $('<thead><tr></tr></thead>');
+                            tableHeader.append('<th>Name</th><th>Roll Number</th><th>Class</th><th>Year</th><th></th>');
+                            table.append(tableHeader);
+
+                            const tableBody = $('<tbody></tbody>');
+                            $.each(data, function(index, student) {
+                            const tableRow = $('<tr></tr>');
+
+                            // Wrap student name in a link to details page
+                            tableRow.append($('<td>').append($('<a>').text(student.name).attr('href', `/Student/${student.id}`)));
+
+                            tableRow.append($('<td>').text(student.roll_number)); // Assuming "roll_number" is the property
+                            tableRow.append($('<td>').text(student.class)); // Assuming "class" is the property
+                            tableRow.append($('<td>').text(student.year)); // Assuming "year" is the property
+                            tableRow.append($('<td>').append($('<a>').text('More details').attr('href', `/Student/${student.id}`)));
+
+                            tableBody.append(tableRow);
+                            });
+                            table.append(tableBody);
+                            $('#searchResults').append(table);
+                        } else {
+                            $('#searchResults').text('No results found.');
+                        }
+                        },
+                        error: function(error) {
+                        console.error(error);
+                        }
+                    });
+                    } else {
+                    // Clear search results if search term is empty
+                    $('#searchResults').html('');
+                    }
+                });
+                //End Search student
+            });
+
+        </script>
+
     </body>
 </html>

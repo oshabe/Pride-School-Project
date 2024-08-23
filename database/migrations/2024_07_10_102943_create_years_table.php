@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::create('years', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('number');
+            $table->string('Year')->nullable();
+            $table->foreignId('class_id')->constrained('school_classes')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('status')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
+        });
     }
 
     /**
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('years');
     }
 };
